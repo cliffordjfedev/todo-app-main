@@ -1,0 +1,261 @@
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.container-fluid {
+  max-width: 90rem;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container-fluid.dark-mode {
+  background-color: #161722;
+}
+.container-fluid.dark-mode .attribution {
+  color: #cacde8;
+}
+.container-fluid.dark-mode .attribution a {
+  color: #cacde8;
+}
+.container-fluid.dark-mode .attribution a:hover {
+  color: #e4e5f1;
+}
+
+header {
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+}
+header .btn {
+  padding: 0;
+}
+header .btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+header .header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 5rem;
+  margin-bottom: 0.5rem;
+}
+header .header-info h1 {
+  font-size: 2rem;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: #fafafa;
+  margin-bottom: 0;
+}
+header.light-mode {
+  background-image: url("/images/bg-desktop-light.jpg");
+  background-size: 100%;
+}
+header.dark-mode {
+  background-image: url("/images/bg-desktop-dark.jpg");
+  background-size: 100%;
+}
+header.dark-mode .form-control {
+  background-color: #25273c;
+  border-color: #25273c;
+  color: #fafafa;
+}
+header.dark-mode .form-control:focus {
+  background-color: #25273c;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.custom-width {
+  max-width: 33.75rem;
+  width: 100%;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.dark-mode .rounded-circle {
+  border-color: #4d5066 !important;
+}
+
+.rounded-circle {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #d2d3db;
+  cursor: pointer;
+  transition: all 300ms linear;
+}
+.rounded-circle:hover {
+  border-color: transparent;
+  background-image: -webkit-linear-gradient(#57ddff, #c058f3);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+.rounded-circle:hover .circle-inner {
+  background-color: white;
+  width: 15px;
+  height: 15px;
+}
+
+.rounded-pos {
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+}
+
+.rounded-selected {
+  background-image: -webkit-linear-gradient(#57ddff, #c058f3);
+  background-image: -moz-linear-gradient(#57ddff, #c058f3);
+  position: relative;
+}
+
+.white-check {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+}
+
+.line-added {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  cursor: pointer;
+}
+.line-added p {
+  color: #484b6a;
+  margin-left: 1rem;
+  margin-bottom: 0;
+}
+.line-added:hover .delete-btn {
+  visibility: visible;
+}
+
+.delete-btn {
+  visibility: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: all 100ms linear;
+}
+
+.delete-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-selected {
+  color: #3a7bfd !important;
+}
+
+.completed p {
+  text-decoration: line-through !important;
+  color: #d2d3db !important;
+}
+
+main {
+  position: relative;
+  top: -85px;
+}
+main .todo-list {
+  max-height: 270px;
+  overflow-y: auto;
+}
+main .dark-mode {
+  background-color: #25273c !important;
+}
+main .dark-mode p {
+  color: #cacde8;
+}
+main .dark-mode .completed p {
+  color: #4d5066 !important;
+}
+main .dark-mode .border-bottom {
+  border-color: #4d5066 !important;
+}
+main .dark-mode .todo-list-nav p {
+  color: #4d5066;
+}
+main .dark-mode .todo-list-nav .btn {
+  color: #4d5066;
+}
+main .dark-mode .todo-list-nav .btn:hover {
+  color: #e4e5f1;
+}
+main .sm-device {
+  display: none;
+}
+main .todo-list-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.9rem;
+}
+main .todo-list-nav p {
+  color: #9394a5;
+  font-size: 0.6875rem;
+  margin-bottom: 0;
+}
+main .todo-list-nav .btn {
+  box-shadow: none;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #9394a5;
+  margin-right: 0.5rem;
+  transition: all 300ms linear;
+}
+main .todo-list-nav .btn:hover {
+  color: #484b6a;
+}
+
+@media screen and (max-width: 25rem) {
+  header .header-info {
+    padding-top: 3rem;
+  }
+  header .header-info h1 {
+    font-size: 1.5rem;
+  }
+  header.light-mode {
+    background-image: url("/images/bg-mobile-light.jpg");
+    background-size: 100%;
+  }
+  header.dark-mode {
+    background-image: url("/images/bg-mobile-dark.jpg");
+    background-size: 100%;
+  }
+  header .form-control {
+    font-size: 0.85rem;
+    padding: 0.575rem 0.95rem;
+  }
+
+  main {
+    top: -140px;
+  }
+  main .sm-device {
+    display: block;
+    margin-top: 1rem;
+    padding: 0.5rem;
+  }
+  main .sm-device .todo-list-nav {
+    justify-content: center;
+    margin: 4px;
+  }
+
+  .custom-width {
+    padding-right: 1.2rem;
+    padding-left: 1.2rem;
+  }
+
+  .line-added p {
+    font-size: 13px;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

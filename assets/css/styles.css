@@ -66,6 +66,11 @@ header.dark-mode .form-control:focus {
   background-color: #25273c;
 }
 
+.form-control {
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
 .form-control:focus {
   box-shadow: none;
   outline: none;

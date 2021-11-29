@@ -304,8 +304,10 @@ function updateLS() {
     if (localStorage.getItem('myTodos') !== null) {
         if (lineAdded.length > 0) {
             lineAdded.forEach(function (element, i) {
-                myObj.push({ id: i, template: element.outerHTML });
-                localStorage.setItem('myTodos', JSON.stringify(myObj));
+                if (!element.classList.contains('sortable-fallback')) {
+                    myObj.push({ id: i, template: element.outerHTML });
+                    localStorage.setItem('myTodos', JSON.stringify(myObj));
+                }
             });
         }
         else {

@@ -131,6 +131,7 @@ function checkContainer() {
 function loadContent() {
     var container = document.getElementById('todoList');
     loadFromLS();
+    loadSwitchMode();
     if (container.children.length > 0) {
         var unCompleted = document.querySelectorAll('.line-added');
         var listUncompleted_2 = [];
@@ -246,6 +247,9 @@ document.getElementById('switchMode').addEventListener('click', function (e) {
     var darkMode = document.querySelectorAll('.dark-mode');
     var lightMode = document.querySelectorAll('.light-mode');
     var img = document.querySelector('#switchMode img');
+    var switchObj = { mode: '', iconSrc: '', iconAlt: '' };
+    //: { mode: string, iconSrc:string, iconAlt:string };
+    // let myObj: Array<{ id: any, template: any }> = [];
     if (darkMode.length > 0) {
         darkMode.forEach(function (element) {
             element.classList.remove('dark-mode');
@@ -253,6 +257,9 @@ document.getElementById('switchMode').addEventListener('click', function (e) {
             img.setAttribute('src', './images/icon-moon.svg');
             img.setAttribute('alt', 'Icon Moon');
         });
+        switchObj.mode = 'light-mode';
+        switchObj.iconSrc = './images/icon-moon.svg';
+        switchObj.iconAlt = 'light mode';
     }
     else {
         lightMode.forEach(function (element) {
@@ -261,7 +268,11 @@ document.getElementById('switchMode').addEventListener('click', function (e) {
             img.setAttribute('src', './images/icon-sun.svg');
             img.setAttribute('alt', 'Icon Sun');
         });
+        switchObj.mode = 'dark-mode';
+        switchObj.iconSrc = './images/icon-sun.svg';
+        switchObj.iconAlt = 'dark mode';
     }
+    localStorage.setItem('SwitchMode', JSON.stringify(switchObj));
 });
 /**
  * Show or Hide nav Buttons in Small devices
@@ -313,6 +324,33 @@ function updateLS() {
         else {
             localStorage.removeItem('myTodos');
         }
+    }
+}
+function loadSwitchMode() {
+    var darkMode = document.querySelectorAll('.dark-mode');
+    var lightMode = document.querySelectorAll('.light-mode');
+    var img = document.querySelector('#switchMode img');
+    var activeState = JSON.parse(localStorage.getItem('SwitchMode'));
+    if (darkMode.length > 0) {
+        darkMode.forEach(function (element) {
+            if (localStorage.getItem('SwitchMode') !== null) {
+                element.classList.remove('dark-mode');
+                element.classList.add("" + activeState.mode);
+                img.setAttribute('src', "" + activeState.iconSrc);
+                img.setAttribute('alt', "" + activeState.iconAlt);
+            }
+        });
+    }
+    else {
+        lightMode.forEach(function (element) {
+            element.classList.remove('light-mode');
+            element.classList.add('dark-mode');
+            img.setAttribute('src', './images/icon-sun.svg');
+            img.setAttribute('alt', 'Icon Sun');
+            element.classList.add("" + activeState.mode);
+            img.setAttribute('src', "" + activeState.iconSrc);
+            img.setAttribute('alt', "" + activeState.iconAlt);
+        });
     }
 }
 document.addEventListener('change', function () {

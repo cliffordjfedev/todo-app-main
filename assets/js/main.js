@@ -248,8 +248,6 @@ document.getElementById('switchMode').addEventListener('click', function (e) {
     var lightMode = document.querySelectorAll('.light-mode');
     var img = document.querySelector('#switchMode img');
     var switchObj = { mode: '', iconSrc: '', iconAlt: '' };
-    //: { mode: string, iconSrc:string, iconAlt:string };
-    // let myObj: Array<{ id: any, template: any }> = [];
     if (darkMode.length > 0) {
         darkMode.forEach(function (element) {
             element.classList.remove('dark-mode');
